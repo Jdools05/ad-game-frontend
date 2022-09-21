@@ -15,7 +15,7 @@ const favicon = require('serve-favicon');
 
 app.use(cookieParser());
 
-app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, 'public', 'assets', 'images', 'favicon.ico')));
 
 // for parsing application/json
 app.use(bodyParser.json());
@@ -31,23 +31,23 @@ app.use(express.static("public"));
 app.get('/', function (req, res) {
     // TODO implement reactive routing
     // for instance if the user is logged in, go to home, otherwise go to login
-    res.sendFile(path.join(__dirname, '/public/pages/login.html'));
+    res.sendFile(path.join(__dirname, '/views/login.html'));
 });
 
 app.get('/login', function (req, res) {
-    res.sendFile(path.join(__dirname, '/public/pages/login.html'));
+    res.sendFile(path.join(__dirname, '/views/login.html'));
 });
 
 app.get('/home', function (req, res) {
 
     authenticate(req, res, function () {
         console.log("Authenticated");
-        res.sendFile(path.join(__dirname, '/public/pages/index.html'));
+        res.sendFile(path.join(__dirname, '/views/index.html'));
     });
 });
 
 app.get('/leaderboard', function (req, res) {
-    res.sendFile(path.join(__dirname, '/public/pages/leaderboard.html'));
+    res.sendFile(path.join(__dirname, '/views/leaderboard.html'));
 });
 
 app.post('/register', function (req, res) {
@@ -97,7 +97,7 @@ app.get('/about', function (req, res) {
 });
 
 app.get('/error', function (req, res) {
-    res.sendFile(path.join(__dirname, '/public/pages/error.html'));
+    res.sendFile(path.join(__dirname, '/views/error.html'));
 });
 
 app.get('/admin-cookie', function (req, res) {
